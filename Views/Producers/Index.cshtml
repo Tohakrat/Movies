@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MvcMovie.Models.ProducerPlus>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+    <h1>Index</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProducerItem.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProducerItem.Age)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProducerItem.Movies)
+                </th>
+                
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProducerItem.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProducerItem.Age)
+                    </td>
+                    <td>                        
+                            @Html.DisplayFor(modelItem => item.Count)       
+              
+                        @*Html.DisplayFor(modelItem => item.ProducerItem.Movies.Count()))*@
+
+                    </td>                    
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ProducerItem.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ProducerItem.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ProducerItem.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
