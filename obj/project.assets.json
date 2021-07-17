@@ -7109,11 +7109,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\projects\\CS\\MvcMovie\\MvcMovie\\MvcMovie.csproj",
+      "projectUniqueName": "D:\\projects\\CS\\movie2\\MvcMovie\\MvcMovie.csproj",
       "projectName": "MvcMovie",
-      "projectPath": "D:\\projects\\CS\\MvcMovie\\MvcMovie\\MvcMovie.csproj",
+      "projectPath": "D:\\projects\\CS\\movie2\\MvcMovie\\MvcMovie.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\projects\\CS\\MvcMovie\\MvcMovie\\obj\\",
+      "outputPath": "D:\\projects\\CS\\movie2\\MvcMovie\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
