@@ -308,3 +308,6 @@ D:\projects\CS\movie2\MvcMovie\obj\Debug\net5.0\MvcMovie.RazorTargetAssemblyInfo
 D:\projects\CS\movie2\MvcMovie\obj\Debug\net5.0\MvcMovie.Views.pdb
 D:\projects\CS\movie2\MvcMovie\obj\Debug\net5.0\MvcMovie.csproj.CopyComplete
 D:\projects\CS\movie2\MvcMovie\obj\Debug\net5.0\MvcMovie.genruntimeconfig.cache
+D:\projects\CS\movie2\MvcMovie\obj\Debug\net5.0\Razor\Views\Producers\Edit.cshtml.g.cs
+D:\projects\CS\movie2\MvcMovie\obj\Debug\net5.0\Razor\Views\Producers\Details.cshtml.g.cs
+D:\projects\CS\movie2\MvcMovie\obj\Debug\net5.0\Razor\Views\Producers\Delete.cshtml.g.cs

@@ -1,5 +1,6 @@
 ﻿ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,9 +48,15 @@ namespace MvcMovie.Controllers
             //return View(await _context.Producers.ToListAsync());
         }      
         // GET: Producer/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            _context.Producers.Load();
+            _context.Movies.Load();
+            //ViewBag.Producer =  _context.Producers.Include(c => c.Id).AsNoTracking();
+            var producer = await _context.Producers.FindAsync(id);
+
+            return View(producer);            
+            //return View();
         }
         // GET: Producer/Create
         public ActionResult Create()
@@ -70,23 +77,54 @@ namespace MvcMovie.Controllers
             return View(producer);
         }
         // GET: Producer/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int? id)
+       
         {
-            return View();
+            
+            _context.Producers.ToList();
+            var producer = await _context.Producers.FindAsync(id);
+
+            return View(producer);
         }
         // POST: Producer/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit([Bind("Id,Name,Age")] Producer producer)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                _context.Update(producer);
+                await _context.SaveChangesAsync();
+                //return RedirectToAction(nameof(Index));
+                //return Index();
             }
             catch
             {
-                return View();
+               return RedirectToAction(nameof(Index));;
             }
+            return RedirectToAction(nameof(Index));
+
+            /*if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(movie);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!MovieExists(movie.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            
+            }*/
         }
 
         // GET: Producer/Delete/5

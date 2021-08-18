@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace MvcMovie.Models
 {
@@ -11,9 +12,12 @@ namespace MvcMovie.Models
     public class Movie
     {
         public int Id { get; set; }
+        [StringLength(50)]
         public string Title { get; set; }
 
-        //[DataType(DataType.Date)]
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? ReleaseDate { get; set; }
         
         public decimal? Price { get; set; }

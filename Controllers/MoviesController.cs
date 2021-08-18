@@ -25,7 +25,7 @@ namespace MvcMovie.Controllers
         {
             int pageSize = 8;
             
-            pageNumber = 1;
+            if (pageNumber ==null)      pageNumber = 1;
             
 
             _context.Genres.ToList();
@@ -142,16 +142,17 @@ namespace MvcMovie.Controllers
         // GET: Movies/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            //_context.Genres.ToList();
-            //_context.Producers.ToList();
+            _context.Genres.ToList();
+            _context.Producers.ToList();
 
             /*List<Producer> ProducersList = new List<Producer> { };
             foreach (Producer producer1 in _context.Producers)
             {
                 ProducersList.Add(producer1);
 
-            }        */    
-            ViewBag.ListProd = _context.Producers;
+            }        */
+            //ViewBag.ListProd = (IEnumerable<Producer>)(_context.Producers);
+            ViewBag.ListProd = (_context.Producers);
 
             List<Genre> GenreList = new List<Genre> { };
             foreach (Genre Genre1 in _context.Genres)
@@ -159,6 +160,7 @@ namespace MvcMovie.Controllers
                 GenreList.Add(Genre1);
             }
             ViewBag.ListGenres = GenreList;
+            
             if (id == null)
             {
                 return NotFound();
@@ -167,6 +169,9 @@ namespace MvcMovie.Controllers
             var movie = await _context.Movies.FindAsync(id);
             ViewBag.SelectedProducer = movie.Producer;
             ViewBag.SelectedGenre = movie.Genre;
+            //SelectList prodList = new SelectList(_context.Producers, "Id", "Name");
+            
+            //prodList.SelectedValues
             /*SelectList selectList = new SelectList(_context.Producers, "Id", "Name");
             foreach (var item in selectList.Items)
             {
